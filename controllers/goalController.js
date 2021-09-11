@@ -26,6 +26,21 @@ const getGoalById = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Delete a product
+// @route   DELETE /api/goals/:id
+// @access  Private/Admin
+const deleteGoal = asyncHandler(async (req, res) => {
+  const goal = await Goal.findById(req.params.id)
+
+  if (goal) {
+    await goal.remove()
+    res.json({ message: 'Goal deleted' })
+  } else {
+    res.status(404)
+    throw new Error('Goal not found')
+  }
+})
+
 // @desc    Get all goals
 // @route   GET /api/goals
 // @access  Private
@@ -34,4 +49,4 @@ const getGoal = asyncHandler(async (req, res) => {
   res.json(goals);
 });
 
-export { addGoal, getGoal, getGoalById };
+export { addGoal, getGoal, getGoalById, deleteGoal };
