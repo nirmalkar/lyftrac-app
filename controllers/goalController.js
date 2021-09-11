@@ -26,27 +26,56 @@ const getGoalById = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Delete a product
+// @desc    Delete a goal
 // @route   DELETE /api/goals/:id
-// @access  Private/Admin
+// @access  Private
 const deleteGoal = asyncHandler(async (req, res) => {
-  const goal = await Goal.findById(req.params.id)
+  const goal = await Goal.findById(req.params.id);
 
   if (goal) {
-    await goal.remove()
-    res.json({ message: 'Goal deleted' })
+    await goal.remove();
+    res.json({ message: "Goal deleted" });
   } else {
-    res.status(404)
-    throw new Error('Goal not found')
+    res.status(404);
+    throw new Error("Goal not found");
   }
-})
+});
+
+// @desc    Update a goal
+// @route   PUT /api/goals/:id
+// @access  Private
+const updateGoal = asyncHandler(async (req, res) => {
+  const {
+    goal: { user_id, title, type, image, progress, children, isCompleted },
+  } = req.body;
+
+  const updateGoal = await Goal.findById(req.params.id);
+
+  if (updateGoal) {
+    const update = updateGoal.goal;
+    update.user_id = user_id;
+    update.title = title;
+    update.title = title;
+    update.image = image;
+    update.type = type;
+    update.progress = progress;
+    update.children = children;
+    update.isCompleted = isCompleted;
+
+    const updatedGoal = await updateGoal.save();
+    res.json(updatedGoal);
+  } else {
+    res.status(404);
+    throw new Error("Goal not found");
+  }
+});
 
 // @desc    Get all goals
 // @route   GET /api/goals
-// @access  Private
+// @access  Private/Admin
 const getGoal = asyncHandler(async (req, res) => {
   const goals = await Goal.find({}).populate("user", "id name");
   res.json(goals);
 });
 
-export { addGoal, getGoal, getGoalById, deleteGoal };
+export { addGoal, getGoal, getGoalById, deleteGoal, updateGoal };
