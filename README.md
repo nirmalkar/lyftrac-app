@@ -16,3 +16,26 @@
 | https://lyftrac.herokuapp.com/ | GET    | `"/api/goals/id"`      | Get a goal using id             |
 | https://lyftrac.herokuapp.com/ | PUT    | `"/api/goals/id"`      | Update a goal using id          |
 | https://lyftrac.herokuapp.com/ | DELETE | `"/api/goals/id"`      | Update a goal using id          |
+
+
+## Available Scripts
+
+**Install Dependencies**
+
+```bash
+npm install
+```
+
+**Start Development Server**
+
+```bash
+npm run dev
+```
+
+**Start Production Server**
+
+```bash
+npm start
+```
+
+---
