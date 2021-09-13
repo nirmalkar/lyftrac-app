@@ -15,7 +15,7 @@
 | https://lyftrac.herokuapp.com/ | GET    | `"/api/goals/id"`      | Get all the goals using user id |
 | https://lyftrac.herokuapp.com/ | GET    | `"/api/goals/id"`      | Get a goal using id             |
 | https://lyftrac.herokuapp.com/ | PUT    | `"/api/goals/id"`      | Update a goal using id          |
-| https://lyftrac.herokuapp.com/ | DELETE | `"/api/goals/id"`      | Update a goal using id          |
+| https://lyftrac.herokuapp.com/ | DELETE | `"/api/goals/id"`      | Delete a goal using id          |
 
 
 ## Available Scripts
